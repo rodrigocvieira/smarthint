@@ -7,6 +7,7 @@ module.exports = {
     colors: {
       primary: "#0086FF",
       white: "#FFFFFF",
+      gray: "#B0A6A6"
     },
     fontFamily: {
       'body': ['"Roboto"']

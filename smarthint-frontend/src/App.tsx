@@ -4,38 +4,58 @@ import Header from './components/Header';
 import { Grid } from './components/Grid/Grid';
 import ClienteListagemDTO from './model/ClienteListagemDTO';
 import { Edit, EditBlue } from './components/Icons';
-
-const clientes: ClienteListagemDTO[] = [
-	new ClienteListagemDTO("1", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("2", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("3", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("4", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("5", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("6", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("7", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("8", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("9", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("10", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("11", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("12", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("13", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("14", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("15", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("16", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("17", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("18", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("19", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false),
-	new ClienteListagemDTO("20", "nome", "empresa@empresa.com.br", "44999999999", "11/07/2024", false)
-]
+import { useEffect, useState } from 'react';
+import ClientePayload from './model/ClientePayload';
+import consultaClientes from './services/api';
 
 function App() {
 
+	const [payload, setPayload] = useState(new ClientePayload([], false))
+	const [temPaginaAnterior, setTemPaginaAnterior] = useState(false)
+	const [temPaginaPosterior, setTemPaginaPosterior] = useState(false)
+	const [paginaAtual, setPaginaAtual] = useState(1)
+
+	useEffect(() => {
+		consultar(paginaAtual).then(data => {
+			setPayload(data)
+			setTemPaginaAnterior(false)
+			setTemPaginaPosterior(data.proximaPagina)
+		})
+	}, [])
+
+	async function consultar(pagina: number) {
+		const response = await consultaClientes(pagina)
+		const data = await response.json()
+		return data[0]
+	}
+
+	function filtrar() {
+
+	}
+
+	function controlePaginaAnterior() {
+		var controlePagina = paginaAtual
+		controlePagina -= 1
+		setTemPaginaAnterior(controlePagina > 0)
+		setPaginaAtual(controlePagina)
+
+		return controlePagina
+	}
+
+	function controlePaginaPosterior() {
+		var controlePagina = paginaAtual
+		controlePagina += 1
+		setPaginaAtual(controlePagina)
+
+		return controlePagina
+	}
+	
 
 	return (
 		<div className='m-auto'>
 			<div className='p-5'>
 				<Header />
-				<Button>
+				<Button onClick={filtrar}>
 					Filtrar
 				</Button>
 			</div>
@@ -43,17 +63,40 @@ function App() {
 			<Grid.Root>
 				<Grid.Header />
 				<Grid.Body>
-					{clientes.map((cliente: ClienteListagemDTO, i) => {
+					{payload.clientes?.map((cliente: ClienteListagemDTO, i) => {
+
+						const controleCorLinha = i % 2 === 0
+
 						return (
-							<Grid.Line object={cliente} color={i % 2 == 0} key={cliente.id}>
+							<Grid.Line object={cliente} color={controleCorLinha} key={cliente.id}>
 								<Grid.Button >
-									{i % 2 == 0 ? Edit : EditBlue}
+									{controleCorLinha ? Edit : EditBlue}
 								</Grid.Button>
 							</Grid.Line>
 						)
 					})}
 				</Grid.Body>
-				<Grid.Pagination />
+				<Grid.Pagination
+					habilitaPaginaAnterior={temPaginaAnterior}
+					onClickAnterior={() => {
+						const controlePagina = controlePaginaAnterior()
+
+						consultar(controlePagina).then(data => {
+							setPayload(data)
+							setTemPaginaAnterior(controlePagina > 1)
+							setTemPaginaPosterior(data.proximaPagina)
+						})
+					}}
+					habilitaPaginaPosterior={temPaginaPosterior}
+					onClickPosterior={() => {
+						const controlePagina = controlePaginaPosterior()
+
+						consultar(controlePagina).then(data => {
+							setPayload(data)
+							setTemPaginaAnterior(true)
+							setTemPaginaPosterior(data.proximaPagina)
+						})
+					}} />
 			</Grid.Root>
 		</div>
 	);

@@ -1,12 +1,27 @@
 import Button from "../Button";
 
-export default function GridPagination() {
+
+interface GridPaginationProp {
+    habilitaPaginaAnterior: boolean,
+    onClickAnterior: () => void,
+    habilitaPaginaPosterior: boolean,
+    onClickPosterior: () => void 
+}
+
+export default function GridPagination(prop: GridPaginationProp) {
+
     return (
         <caption className="caption-bottom space-x-3 p-1 text-right">
-            <Button>
+            <Button 
+                className={`${prop.habilitaPaginaAnterior ? "" : "bg-gray"} `}
+                disabled={!prop.habilitaPaginaAnterior}
+                onClick={prop.onClickAnterior}>
                 Página anterior
             </Button>
-            <Button>
+            <Button 
+                className={`${prop.habilitaPaginaPosterior ? "" : "bg-gray"} `}
+                disabled={!prop.habilitaPaginaPosterior}
+                onClick={prop.onClickPosterior}>
                 Próxima página
             </Button>
         </caption>

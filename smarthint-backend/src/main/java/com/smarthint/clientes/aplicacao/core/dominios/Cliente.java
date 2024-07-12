@@ -12,7 +12,7 @@ public record Cliente(
         TipoPessoa tipo,
         String cpfCnpj,
         String inscricaoEstadual,
-        GeneroPessoa Genero,
+        GeneroPessoa genero,
         Date dataNascimento,
         boolean isBloqueado,
         String senha

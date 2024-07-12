@@ -4,3 +4,13 @@ server:
 spring:
   application:
     name: smarthint-backend
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: cliente-service
+      username: admin
+      password: admin
+      authentication-database: admin
+      auto-index-creation: true

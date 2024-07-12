@@ -1,4 +1,4 @@
-package com.smarthint.clientes.smarthint_backend;
+package com.smarthint.clientes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

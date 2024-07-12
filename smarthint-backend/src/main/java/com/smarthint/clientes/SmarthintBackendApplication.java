@@ -1,4 +1,4 @@
-package com.smarthint.clientes.smarthint_backend;
+package com.smarthint.clientes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

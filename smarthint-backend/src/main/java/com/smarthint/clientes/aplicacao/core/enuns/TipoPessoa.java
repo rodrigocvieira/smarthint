@@ -14,4 +14,8 @@ public enum TipoPessoa {
     public String getDescricao() {
         return descricao;
     }
+
+    public boolean isJuridica() {
+        return this.equals(JURIDICA);
+    }
 }

@@ -1,6 +1,7 @@
 package com.smarthint.clientes.config;
 
 import com.smarthint.clientes.adaptadores.saida.InserirClienteAdapter;
+import com.smarthint.clientes.adaptadores.saida.ValidaClienteAdapter;
 import com.smarthint.clientes.aplicacao.core.casoDeUso.InserirClienteUseCase;
 import com.smarthint.clientes.aplicacao.portas.entradas.InserirClienteInputPort;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +12,9 @@ public class InserirClienteConfig {
 
     @Bean
     public InserirClienteInputPort inserirClienteInputPort(
-            InserirClienteAdapter inserirClienteAdapter
+            InserirClienteAdapter inserirClienteAdapter,
+            ValidaClienteAdapter validaClienteAdapter
     ) {
-        return new InserirClienteUseCase(inserirClienteAdapter);
+        return new InserirClienteUseCase(inserirClienteAdapter, validaClienteAdapter);
     }
 }

@@ -1,6 +1,7 @@
 package com.smarthint.clientes.adaptadores;
 
 import com.mongodb.MongoWriteException;
+import com.smarthint.clientes.aplicacao.core.exceptions.ClienteInvalidoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -26,6 +27,14 @@ public class ApiExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse(
                 ex.getMessage()
         );
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(ClienteInvalidoException.class)
+    public ResponseEntity<ErrorResponse> handleThrowable(ClienteInvalidoException ex, Locale locale) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                ex.getMessage()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 }

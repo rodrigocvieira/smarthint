@@ -3,7 +3,8 @@ package com.smarthint.clientes.aplicacao.core.enuns;
 public enum GeneroPessoa {
 
     MASCULINO("Masculino"),
-    FEMININO("Feminino");
+    FEMININO("Feminino"),
+    OUTRO("Outro");
 
     private String descricao;
 

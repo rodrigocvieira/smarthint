@@ -23,14 +23,14 @@ public class InserirClienteUseCase implements InserirClienteInputPort {
     public Cliente inserir(Cliente cliente) {
         cliente.isValido();
 
-        if (validaClienteOutputPort.validaEmail(cliente.email()))
+        if (validaClienteOutputPort.emailJaExiste(cliente.email()))
             throw new ClienteEmailVinculadoException();
 
-        if (validaClienteOutputPort.validaCpfCnpj(cliente.cpfCnpj()))
+        if (validaClienteOutputPort.cpfCnpjJaExiste(cliente.cpfCnpj()))
             throw new ClienteCampoCpfCnpjEmUsoException();
 
         if (cliente.tipo().isJuridica())
-            if (validaClienteOutputPort.validaInscricaoEstadual(cliente.inscricaoEstadual()))
+            if (validaClienteOutputPort.inscricaoEstadualJaExiste(cliente.inscricaoEstadual()))
                 throw new ClienteCampoInscricaoEstadualEmUsoException();
 
         return inserirClienteOutputPort.inserir(cliente);

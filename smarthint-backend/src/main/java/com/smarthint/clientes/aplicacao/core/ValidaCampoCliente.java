@@ -26,7 +26,7 @@ public class ValidaCampoCliente {
     }
 
     public static void comprimentoPermitido(String campo, String valor, int minimo, int maximo) {
-        if (valor.length() < minimo && valor.length() > maximo)
+        if (valor.length() < minimo || valor.length() > maximo)
             throw new ClienteCampoTamanhoCampoInvalidoException(campo);
     }
 

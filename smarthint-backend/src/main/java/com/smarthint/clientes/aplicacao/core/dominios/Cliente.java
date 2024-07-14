@@ -31,17 +31,17 @@ public record Cliente(
     public static final int TAMANHO_8 = 8;
     public static final int TAMANHO_0 = 0;
 
-    public static final String NOME_OU_RAZAO_SOCIAL = "Nome ou Razão Social";
-    public static final String E_MAIL = "E-mail";
-    public static final String TELEFONE = "Telefone";
-    public static final String TIPO_DE_PESSOA = "Tipo de pessoa";
-    public static final String CNPJ = "CNPJ";
-    public static final String INSCRICAO_ESTADUAL = "Inscrição estadual";
-    public static final String CPF = "CPF";
-    public static final String GENERO = "Genero";
-    public static final String DATA_DE_NASCIMENTO = "Data de nascimento";
-    public static final String SENHA = "Senha";
-    public static final String SENHA_CONFIRMACAO = "Confirmação da senha";
+    private static final String NOME_OU_RAZAO_SOCIAL = "Nome ou Razão Social";
+    private static final String E_MAIL = "E-mail";
+    private static final String TELEFONE = "Telefone";
+    private static final String TIPO_DE_PESSOA = "Tipo de pessoa";
+    private static final String CNPJ = "CNPJ";
+    private static final String INSCRICAO_ESTADUAL = "Inscrição estadual";
+    private static final String CPF = "CPF";
+    private static final String GENERO = "Genero";
+    private static final String DATA_DE_NASCIMENTO = "Data de nascimento";
+    private static final String SENHA = "Senha";
+    private static final String SENHA_CONFIRMACAO = "Confirmação da senha";
 
 
     public void isValido() {

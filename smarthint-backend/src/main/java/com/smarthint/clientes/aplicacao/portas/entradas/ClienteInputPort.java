@@ -2,7 +2,9 @@ package com.smarthint.clientes.aplicacao.portas.entradas;
 
 import com.smarthint.clientes.aplicacao.core.dominios.Cliente;
 
-public interface InserirClienteInputPort {
+public interface ClienteInputPort {
 
-    Cliente inserir(Cliente cliente);
+    void inserir(Cliente cliente);
+
+    void editar(String id, Cliente cliente);
 }

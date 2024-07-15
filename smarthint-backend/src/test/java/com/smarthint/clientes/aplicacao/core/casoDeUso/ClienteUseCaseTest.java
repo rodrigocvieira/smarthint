@@ -6,7 +6,7 @@ import com.smarthint.clientes.aplicacao.core.enuns.TipoPessoa;
 import com.smarthint.clientes.aplicacao.core.exceptions.ClienteCampoCpfCnpjEmUsoException;
 import com.smarthint.clientes.aplicacao.core.exceptions.ClienteCampoInscricaoEstadualEmUsoException;
 import com.smarthint.clientes.aplicacao.core.exceptions.ClienteEmailVinculadoException;
-import com.smarthint.clientes.aplicacao.portas.saidas.InserirClienteOutputPort;
+import com.smarthint.clientes.aplicacao.portas.saidas.ClienteOutputPort;
 import com.smarthint.clientes.aplicacao.portas.saidas.ValidaClienteOutputPort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,20 +22,20 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class InserirClienteUseCaseTest {
+class ClienteUseCaseTest {
 
     @Mock
-    InserirClienteOutputPort inserirClienteOutputPort;
+    ClienteOutputPort clienteOutputPort;
     @Mock
     ValidaClienteOutputPort validaClienteOutputPort;
 
-    InserirClienteUseCase inserirClienteUseCase;
+    ClienteUseCase clienteUseCase;
     Cliente clienteFisica;
     Cliente clienteJuridica;
 
     @BeforeEach
     public void init() {
-        inserirClienteUseCase = new InserirClienteUseCase(inserirClienteOutputPort, validaClienteOutputPort);
+        clienteUseCase = new ClienteUseCase(clienteOutputPort, validaClienteOutputPort);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2024, Calendar.JULY, 13);
@@ -70,9 +70,9 @@ class InserirClienteUseCaseTest {
         when(validaClienteOutputPort.emailJaExiste(any())).thenReturn(false);
         when(validaClienteOutputPort.cpfCnpjJaExiste(any())).thenReturn(false);
 
-        inserirClienteUseCase.inserir(clienteFisica);
+        clienteUseCase.inserir(clienteFisica);
 
-        verify(inserirClienteOutputPort, times(1)).inserir(clienteFisica);
+        verify(clienteOutputPort, times(1)).inserir(clienteFisica);
     }
 
     @Test
@@ -81,19 +81,19 @@ class InserirClienteUseCaseTest {
         when(validaClienteOutputPort.cpfCnpjJaExiste(any())).thenReturn(false);
         when(validaClienteOutputPort.inscricaoEstadualJaExiste(any())).thenReturn(false);
 
-        inserirClienteUseCase.inserir(clienteJuridica);
+        clienteUseCase.inserir(clienteJuridica);
 
-        verify(inserirClienteOutputPort, times(1)).inserir(clienteJuridica);
+        verify(clienteOutputPort, times(1)).inserir(clienteJuridica);
     }
 
     @Test
     public void naoDeveConseguirInserirClientePorEmailJaExistir() {
         when(validaClienteOutputPort.emailJaExiste(any())).thenReturn(true);
         ClienteEmailVinculadoException clienteEmailVinculadoException = assertThrows(ClienteEmailVinculadoException.class,
-                () -> inserirClienteUseCase.inserir(clienteFisica)
+                () -> clienteUseCase.inserir(clienteFisica)
         );
 
-        verify(inserirClienteOutputPort, never()).inserir(clienteFisica);
+        verify(clienteOutputPort, never()).inserir(clienteFisica);
         assertEquals("E-mail já vinculado a outro Comprador", clienteEmailVinculadoException.getMessage());
     }
 
@@ -103,10 +103,10 @@ class InserirClienteUseCaseTest {
         when(validaClienteOutputPort.cpfCnpjJaExiste(any())).thenReturn(true);
 
         ClienteCampoCpfCnpjEmUsoException clienteCampoCpfCnpjEmUsoException = assertThrows(ClienteCampoCpfCnpjEmUsoException.class,
-                () -> inserirClienteUseCase.inserir(clienteFisica)
+                () -> clienteUseCase.inserir(clienteFisica)
         );
 
-        verify(inserirClienteOutputPort, never()).inserir(clienteFisica);
+        verify(clienteOutputPort, never()).inserir(clienteFisica);
         assertEquals("CPF/CNPJ já está vinculado a outro Comprador", clienteCampoCpfCnpjEmUsoException.getMessage());
     }
 
@@ -117,10 +117,10 @@ class InserirClienteUseCaseTest {
         when(validaClienteOutputPort.inscricaoEstadualJaExiste(any())).thenReturn(true);
 
         ClienteCampoInscricaoEstadualEmUsoException clienteCampoInscricaoEstadualEmUsoException = assertThrows(ClienteCampoInscricaoEstadualEmUsoException.class,
-                () -> inserirClienteUseCase.inserir(clienteJuridica)
+                () -> clienteUseCase.inserir(clienteJuridica)
         );
 
-        verify(inserirClienteOutputPort, never()).inserir(clienteJuridica);
+        verify(clienteOutputPort, never()).inserir(clienteJuridica);
         assertEquals("Inscrição Estadual já está vinculada a outro Comprador", clienteCampoInscricaoEstadualEmUsoException.getMessage());
     }
 

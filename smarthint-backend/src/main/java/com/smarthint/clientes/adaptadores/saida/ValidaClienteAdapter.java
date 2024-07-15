@@ -17,12 +17,27 @@ public class ValidaClienteAdapter implements ValidaClienteOutputPort {
     }
 
     @Override
+    public boolean emailJaExiste(String id, String email) {
+        return clienteRepository.existsByIdNotAndEmail(id, email);
+    }
+
+    @Override
     public boolean cpfCnpjJaExiste(String cpfCnpj) {
         return clienteRepository.existsByCpfCnpj(cpfCnpj);
     }
 
     @Override
+    public boolean cpfCnpjJaExiste(String id, String cpfCnpj) {
+        return clienteRepository.existsByIdNotAndCpfCnpj(id, cpfCnpj);
+    }
+
+    @Override
     public boolean inscricaoEstadualJaExiste(String inscricaoEstadual) {
         return clienteRepository.existsByInscricaoEstadual(inscricaoEstadual);
+    }
+
+    @Override
+    public boolean inscricaoEstadualJaExiste(String id, String inscricaoEstadual) {
+        return clienteRepository.existsByIdNotAndInscricaoEstadual(id, inscricaoEstadual);
     }
 }

@@ -1,11 +1,11 @@
 package com.smarthint.clientes.adaptadores.entrada;
 
 import com.smarthint.clientes.adaptadores.ClienteMapper;
-import com.smarthint.clientes.adaptadores.entrada.request.InserirClienteRequest;
+import com.smarthint.clientes.adaptadores.entrada.request.ClienteRequest;
 import com.smarthint.clientes.adaptadores.entrada.response.ClienteResponse;
 import com.smarthint.clientes.aplicacao.core.dominios.Cliente;
 import com.smarthint.clientes.aplicacao.core.dto.PaginacaoDTO;
-import com.smarthint.clientes.aplicacao.portas.entradas.InserirClienteInputPort;
+import com.smarthint.clientes.aplicacao.portas.entradas.ClienteInputPort;
 import com.smarthint.clientes.aplicacao.portas.entradas.ObterClienteInputPort;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 public class ClienteController {
 
     @Autowired
-    private InserirClienteInputPort inserirClienteInputPort;
+    private ClienteInputPort clienteInputPort;
 
     @Autowired
     private ObterClienteInputPort obterClienteInputPort;
@@ -32,12 +32,26 @@ public class ClienteController {
     @PostMapping("inserir")
     public ResponseEntity<ClienteResponse> inserir(
             @Valid
-            @RequestBody InserirClienteRequest inserirClienteRequest) {
+            @RequestBody ClienteRequest clienteRequest) {
 
-        inserirClienteInputPort.inserir(clienteMapper.toCliente(inserirClienteRequest));
+        clienteInputPort.inserir(clienteMapper.toCliente(clienteRequest));
         redisService.limparCache();
 
         return new ResponseEntity<>(new ClienteResponse("Cliente cadastrado com sucesso!"),
+                HttpStatus.CREATED
+        );
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<ClienteResponse> editar(
+            @PathVariable("id") String id,
+            @Valid
+            @RequestBody ClienteRequest clienteRequest) {
+
+        clienteInputPort.editar(id, clienteMapper.toCliente(clienteRequest));
+        redisService.limparCache();
+
+        return new ResponseEntity<>(new ClienteResponse("Cliente alterado com sucesso!"),
                 HttpStatus.CREATED
         );
     }

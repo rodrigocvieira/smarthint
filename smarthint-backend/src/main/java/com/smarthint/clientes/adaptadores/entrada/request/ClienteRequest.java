@@ -4,7 +4,7 @@ import com.smarthint.clientes.aplicacao.core.dominios.Cliente;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record InserirClienteRequest(
+public record ClienteRequest(
         @NotBlank
         @Size(max = Cliente.TAMANHO_150)
         String nomeRazaoSocial,

@@ -2,6 +2,7 @@ package com.smarthint.clientes.adaptadores.saida.repositorio;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -29,6 +30,7 @@ public record ClienteEntity(
         boolean bloqueado,
         String senha,
         @CreatedDate
+        @LastModifiedDate
         @Field("data_cadastro")
         Date dataDeCadastro
 ) {

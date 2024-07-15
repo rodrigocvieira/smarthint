@@ -19,7 +19,7 @@ public record Cliente(
         String inscricaoEstadual,
         GeneroPessoa genero,
         Date dataNascimento,
-        boolean isBloqueado,
+        boolean bloqueado,
         String senha,
         String senhaConfirmacao
 ) {

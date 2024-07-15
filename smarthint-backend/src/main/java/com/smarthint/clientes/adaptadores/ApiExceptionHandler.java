@@ -2,6 +2,7 @@ package com.smarthint.clientes.adaptadores;
 
 import com.mongodb.MongoWriteException;
 import com.smarthint.clientes.aplicacao.core.exceptions.ClienteInvalidoException;
+import com.smarthint.clientes.aplicacao.core.exceptions.out.ClienteNaoEncontradoException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -36,5 +37,13 @@ public class ApiExceptionHandler {
                 ex.getMessage()
         );
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(ClienteNaoEncontradoException.class)
+    public ResponseEntity<ErrorResponse> handleThrowable(ClienteNaoEncontradoException ex, Locale locale) {
+        ErrorResponse errorResponse = new ErrorResponse(
+                ex.getMessage()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 }

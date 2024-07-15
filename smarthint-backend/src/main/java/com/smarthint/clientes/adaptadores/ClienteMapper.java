@@ -3,6 +3,7 @@ package com.smarthint.clientes.adaptadores;
 import com.smarthint.clientes.adaptadores.entrada.request.InserirClienteRequest;
 import com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity;
 import com.smarthint.clientes.aplicacao.core.dominios.Cliente;
+import com.smarthint.clientes.aplicacao.core.dto.ClienteDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -15,4 +16,6 @@ public interface ClienteMapper {
 
     @Mapping(source = "dataNascimento", target = "dataNascimento", dateFormat = "dd-MM-yyyy")
     Cliente toCliente(InserirClienteRequest inserirClienteRequest);
+
+    ClienteDTO toClienteDto(ClienteEntity clienteEntity);
 }

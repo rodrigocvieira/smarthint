@@ -24,7 +24,7 @@ public record ClienteRequest(
         String genero,
         @NotBlank
         String dataNascimento,
-        boolean isBloqueado,
+        boolean bloqueado,
         @NotBlank
         @Size(min = Cliente.TAMANHO_8, max = Cliente.TAMANHO_15)
         String senha,

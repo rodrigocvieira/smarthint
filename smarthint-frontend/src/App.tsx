@@ -13,20 +13,18 @@ function App() {
 	const [payload, setPayload] = useState(new ClientePayload([], false))
 	const [temPaginaAnterior, setTemPaginaAnterior] = useState(false)
 	const [temPaginaPosterior, setTemPaginaPosterior] = useState(false)
-	const [paginaAtual, setPaginaAtual] = useState(1)
+	const [paginaAtual, setPaginaAtual] = useState(0)
 
 	useEffect(() => {
 		consultar(paginaAtual).then(data => {
 			setPayload(data)
 			setTemPaginaAnterior(false)
-			setTemPaginaPosterior(data.proximaPagina)
+			setTemPaginaPosterior(data?.proximaPagina)
 		})
 	}, [])
 
 	async function consultar(pagina: number) {
-		const response = await consultaClientes(pagina)
-		const data = await response.json()
-		return data[0]
+		return await consultaClientes(pagina)
 	}
 
 	function filtrar() {
@@ -49,7 +47,7 @@ function App() {
 
 		return controlePagina
 	}
-	
+
 
 	return (
 		<div className='m-auto'>
@@ -63,7 +61,7 @@ function App() {
 			<Grid.Root>
 				<Grid.Header />
 				<Grid.Body>
-					{payload.clientes?.map((cliente: ClienteListagemDTO, i) => {
+					{payload?.clientes?.map((cliente: ClienteListagemDTO, i) => {
 
 						const controleCorLinha = i % 2 === 0
 
@@ -83,7 +81,7 @@ function App() {
 
 						consultar(controlePagina).then(data => {
 							setPayload(data)
-							setTemPaginaAnterior(controlePagina > 1)
+							setTemPaginaAnterior(controlePagina > 0)
 							setTemPaginaPosterior(data.proximaPagina)
 						})
 					}}
@@ -98,6 +96,10 @@ function App() {
 						})
 					}} />
 			</Grid.Root>
+			<div className='text-center'>
+				<label>{process.env.REACT_APP_API_MOCK === "true" ? "API MOCK" : "API SPRING"}</label>
+			</div>
+
 		</div>
 	);
 }

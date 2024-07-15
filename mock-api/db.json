@@ -1,184 +1,184 @@
 {
     "clientes": [
         {
-            "pagina": 1,
+            "paginacao": 0,
             "clientes": [
                 {
                     "id": "1",
-                    "nome": "nome1",
+                    "nomeRazaoSocial": "nome1",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "2",
-                    "nome": "nome2",
+                    "nomeRazaoSocial": "nome2",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "3",
-                    "nome": "nome3",
+                    "nomeRazaoSocial": "nome3",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "4",
-                    "nome": "nome4",
+                    "nomeRazaoSocial": "nome4",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "5",
-                    "nome": "nome5",
+                    "nomeRazaoSocial": "nome5",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 }
             ],
             "proximaPagina": true
         },
         {
-            "pagina": 2,
+            "paginacao": 1,
             "clientes": [
                 {
                     "id": "6",
-                    "nome": "nome6",
+                    "nomeRazaoSocial": "nome6",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "7",
-                    "nome": "nome7",
+                    "nomeRazaoSocial": "nome7",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "8",
-                    "nome": "nome8",
+                    "nomeRazaoSocial": "nome8",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "9",
-                    "nome": "nome9",
+                    "nomeRazaoSocial": "nome9",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "10",
-                    "nome": "nome10",
+                    "nomeRazaoSocial": "nome10",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 }
             ],
             "proximaPagina": true
         },
         {
-            "pagina": 3,
+            "paginacao": 2,
             "clientes": [
                 {
                     "id": "11",
-                    "nome": "nome11",
+                    "nomeRazaoSocial": "nome11",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "12",
-                    "nome": "nome12",
+                    "nomeRazaoSocial": "nome12",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "13",
-                    "nome": "nome13",
+                    "nomeRazaoSocial": "nome13",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "14",
-                    "nome": "nome14",
+                    "nomeRazaoSocial": "nome14",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "15",
-                    "nome": "nome15",
+                    "nomeRazaoSocial": "nome15",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 }
             ],
             "proximaPagina": true
         },
         {
-            "pagina": 4,
+            "paginacao": 3,
             "clientes": [
                 {
                     "id": "16",
-                    "nome": "nome16",
+                    "nomeRazaoSocial": "nome16",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "17",
-                    "nome": "nome17",
+                    "nomeRazaoSocial": "nome17",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "18",
-                    "nome": "nome18",
+                    "nomeRazaoSocial": "nome18",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "19",
-                    "nome": "nome19",
+                    "nomeRazaoSocial": "nome19",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 },
                 {
                     "id": "20",
-                    "nome": "nome20",
+                    "nomeRazaoSocial": "nome20",
                     "email": "empresa@empresa.com.br",
                     "telefone": "44999999999",
-                    "dataCadastro": "11/07/2024",
+                    "dataDeCadastro": "11/07/2024 00:00",
                     "ativo": false
                 }
             ],

@@ -1,5 +1,7 @@
+import moment from "moment";
 import ClienteListagemDTO from "../../model/ClienteListagemDTO";
 import Checkbox from "../CheckBox";
+import { formatarTelefone } from "../utils";
 
 interface GridLineProp {
     object: ClienteListagemDTO,
@@ -16,11 +18,13 @@ export default function GridLine(prop: GridLineProp) {
             <th className="p-1">
                 <Checkbox value="true" onClick={() => { }} />
             </th>
-            <td className="p-1 w-72 text-left">{prop.object.nome}</td>
+            <td className="p-1 w-72 text-left">{prop.object.nomeRazaoSocial}</td>
             <td className="p-1 w-72 text-left">{prop.object.email}</td>
-            <td className="p-1 w-12 text-center">{prop.object.telefone}</td>
-            <td className="p-1 w-13 text-center">{prop.object.dataCadastro}</td>
-            <td className="p-1 w-12 text-center">{prop.object.bloqueado ? "Bloqueado" : "-"}</td>
+            <td className="p-1 w-15 text-center">
+                {formatarTelefone(prop.object.telefone)}
+            </td>
+            <td className="p-1 w-13 text-center">{moment(prop.object.dataDeCadastro).format('DD/MM/yyyy HH:mm')}</td>
+            <td className="p-1 w-12 text-center">{prop.object.bloqueado ? "Sim" : "-"}</td>
             <td className="p-1 w-12 text-center">
                 {prop.children}
             </td>

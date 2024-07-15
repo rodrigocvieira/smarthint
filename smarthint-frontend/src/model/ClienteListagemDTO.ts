@@ -1,18 +1,18 @@
 export default class ClienteListagemDTO {
 
     #id: string;
-    #nome: string;
+    #nomeRazaoSocial: string;
     #email: string;
     #telefone: string;
-    #dataCadastro: string;
+    #dataDeCadastro: string;
     #bloqueado: boolean;
 
     constructor(id: string, nome: string, email: string, telefone: string, dataCadastro: string, bloqueado: boolean) {
         this.#id = id
-        this.#nome = nome
+        this.#nomeRazaoSocial = nome
         this.#email = email
         this.#telefone = telefone
-        this.#dataCadastro = dataCadastro
+        this.#dataDeCadastro = dataCadastro
         this.#bloqueado = bloqueado
     }
 
@@ -20,8 +20,8 @@ export default class ClienteListagemDTO {
         return this.#id
     }
 
-    get nome() {
-        return this.#nome
+    get nomeRazaoSocial() {
+        return this.#nomeRazaoSocial
     }
 
     get email() {
@@ -32,8 +32,8 @@ export default class ClienteListagemDTO {
         return this.#telefone
     }
 
-    get dataCadastro() {
-        return this.#dataCadastro
+    get dataDeCadastro() {
+        return this.#dataDeCadastro
     }
 
     get bloqueado() {

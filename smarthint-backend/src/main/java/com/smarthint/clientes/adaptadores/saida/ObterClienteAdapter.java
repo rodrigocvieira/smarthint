@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ObterClienteAdapter implements ObterClienteOutputPort {
 
-    private final int TOTAL_POR_PAGINA = 2;
+    private final int TOTAL_POR_PAGINA = 20;
 
     @Autowired
     private ClienteRepository clienteRepository;

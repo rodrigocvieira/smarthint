@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 export default function Header() {
@@ -7,9 +8,12 @@ export default function Header() {
                 Consulte os seus Clientes cadastrados na sua Loja
             </h1>
             <div className="w-52 content-center text-center">
-                <Button>
-                    Adicionar Cliente
-                </Button>
+                <Link to={"/clientes/"}>
+                    <Button>
+                        Adicionar Cliente
+                    </Button>
+                </Link>
+
             </div>
 
         </div>

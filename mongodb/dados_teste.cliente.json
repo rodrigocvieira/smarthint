@@ -1,0 +1,191 @@
+[{
+  "_id": {
+    "$oid": "669523bb8b8de55ee3e883b0"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@teste9.com",
+  "telefone": "12345678903",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901239",
+  "inscricao_estadual": "123456789039",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": {
+      "$numberLong": "-61962958800000"
+    }
+  },
+  "bloqueado": true,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T14:44:05.712Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "669523e18b8de55ee3e883b1"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@teste1.com",
+  "telefone": "12345678903",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901231",
+  "inscricao_estadual": "123456789031",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T13:28:01.791Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "669523eb8b8de55ee3e883b2"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@teste2.com",
+  "telefone": "12345678903",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901232",
+  "inscricao_estadual": "123456789032",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T13:28:11.147Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "669525252624542187762031"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@teste4.com",
+  "telefone": "12345678904",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901234",
+  "inscricao_estadual": "123456789034",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T13:33:25.404Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "6695258bb42f603f5ec3765e"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@teste5.com",
+  "telefone": "12345678905",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901235",
+  "inscricao_estadual": "123456789035",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T13:35:07.019Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "669525ffa6662c501213c5e5"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@test6.com",
+  "telefone": "12345678906",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901236",
+  "inscricao_estadual": "123456789036",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T13:37:03.840Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "66952cd9e5340f48beb4a2fc"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@test111.com",
+  "telefone": "12345678911",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901216",
+  "inscricao_estadual": "123456789016",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T14:06:17.320Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "66952dc805a11c56e12b0035"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@test1231.com",
+  "telefone": "12345678912",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901212",
+  "inscricao_estadual": "123456789012",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T14:10:16.117Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+},
+{
+  "_id": {
+    "$oid": "669533803244684d4c98db73"
+  },
+  "nome_razao_social": "sss",
+  "email": "111@test1233.com",
+  "telefone": "12345678912",
+  "tipo": "JURIDICA",
+  "cpf_cnpj": "12345678901213",
+  "inscricao_estadual": "123456789013",
+  "genero": "MASCULINO",
+  "data_nascimento": {
+    "$date": "2001-01-01T02:00:00.000Z"
+  },
+  "bloqueado": false,
+  "senha": "12345678",
+  "data_cadastro": {
+    "$date": "2024-07-15T14:34:40.264Z"
+  },
+  "_class": "com.smarthint.clientes.adaptadores.saida.repositorio.ClienteEntity"
+}]

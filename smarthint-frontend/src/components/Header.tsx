@@ -8,7 +8,7 @@ export default function Header() {
                 Consulte os seus Clientes cadastrados na sua Loja
             </h1>
             <div className="w-52 content-center text-center">
-                <Link to={"/clientes/"}>
+                <Link to={"/cliente/"}>
                     <Button>
                         Adicionar Cliente
                     </Button>

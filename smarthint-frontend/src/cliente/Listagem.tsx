@@ -6,7 +6,7 @@ import ClienteListagemDTO from '../model/ClienteListagemDTO';
 import { Edit, EditBlue } from '../components/Icons';
 import { useEffect, useState } from 'react';
 import ClientePayload from '../model/ClientePayload';
-import consultaClientes from '../services/api';
+import { consultaClientes } from '../services/api';
 
 export default function Listagem() {
 
@@ -21,7 +21,7 @@ export default function Listagem() {
 			setTemPaginaAnterior(false)
 			setTemPaginaPosterior(data?.proximaPagina)
 		})
-	}, [])
+	}, [paginaAtual])
 
 	async function consultar(pagina: number) {
 		return await consultaClientes(pagina)

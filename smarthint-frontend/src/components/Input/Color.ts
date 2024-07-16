@@ -1,0 +1,1 @@
+export const CSS = "w-full focus:outline-none text-primary bg-white placeholder-white p-2 rounded-lg border-2 border-primary"

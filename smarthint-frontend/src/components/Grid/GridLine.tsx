@@ -1,7 +1,7 @@
 import moment from "moment";
 import ClienteListagemDTO from "../../model/ClienteListagemDTO";
 import Checkbox from "../CheckBox";
-import { formatarTelefone } from "../utils";
+import { formatarTelefone } from "../Utils";
 
 interface GridLineProp {
     object: ClienteListagemDTO,

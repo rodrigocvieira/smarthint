@@ -9,6 +9,7 @@ function App() {
 			<Routes>
 				<Route path="/" Component={Listagem} />
 				<Route path="/clientes/:id" Component={Cadastro} />
+				<Route path="/cliente" Component={Cadastro} />
 			</Routes>
 		</BrowserRouter>
 	);

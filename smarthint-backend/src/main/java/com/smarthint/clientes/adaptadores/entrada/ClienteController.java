@@ -17,6 +17,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -123,15 +124,21 @@ public class ClienteController {
     })
     @GetMapping("")
     public ResponseEntity<PaginacaoDTO> listarTodos(
-            @RequestParam("paginacao") int paginacao
+            @RequestParam("paginacao") int paginacao,
+            @RequestParam(value = "filtro", required = false) String filtro
     ) {
-        PaginacaoDTO paginaCache = redisService.obterPorPagina(paginacao);
+        if (ObjectUtils.isEmpty(filtro)) {
+            PaginacaoDTO paginaCache = redisService.obterPorPagina(paginacao);
 
-        if (paginaCache != null)
-            return new ResponseEntity<>(paginaCache, HttpStatus.OK);
+            if (paginaCache != null)
+                return new ResponseEntity<>(paginaCache, HttpStatus.OK);
 
-        PaginacaoDTO paginaBanco = obterClienteInputPort.obterPaginado(paginacao);
-        redisService.gravar(paginacao, paginaBanco);
-        return new ResponseEntity<>(paginaBanco, HttpStatus.OK);
+            PaginacaoDTO paginaBanco = obterClienteInputPort.obterPaginado(paginacao);
+            redisService.gravar(paginacao, paginaBanco);
+            return new ResponseEntity<>(paginaBanco, HttpStatus.OK);
+        } else {
+            PaginacaoDTO paginaBanco = obterClienteInputPort.obterPaginado(paginacao, filtro);
+            return new ResponseEntity<>(paginaBanco, HttpStatus.OK);
+        }
     }
 }

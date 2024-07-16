@@ -1,5 +1,7 @@
 package com.smarthint.clientes.adaptadores.saida.repositorio;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface ClienteRepository extends MongoRepository<ClienteEntity, String> {
@@ -16,4 +18,5 @@ public interface ClienteRepository extends MongoRepository<ClienteEntity, String
 
     boolean existsByIdNotAndInscricaoEstadual(String id, String inscricaoEstadual);
 
+    Page<ClienteEntity> findAllByNomeRazaoSocialContaining(String filtro, PageRequest pageRequest);
 }

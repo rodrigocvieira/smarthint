@@ -8,5 +8,7 @@ public interface ObterClienteOutputPort {
 
     Cliente obterPorId(String id);
 
-    PaginacaoDTO obterPaginado(int paginacao);
+    PaginacaoDTO obterPaginado(int pagina);
+
+    PaginacaoDTO obterPaginado(int pagina, String filtro);
 }

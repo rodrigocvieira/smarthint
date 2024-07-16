@@ -32,9 +32,21 @@ public class ObterClienteAdapter implements ObterClienteOutputPort {
     }
 
     @Override
-    public PaginacaoDTO obterPaginado(int paginacao) {
+    public PaginacaoDTO obterPaginado(int pagina) {
         Page<ClienteDTO> page = clienteRepository.findAll(
-                        PageRequest.of(paginacao, TOTAL_POR_PAGINA, Sort.Direction.ASC, "id")
+                        PageRequest.of(pagina, TOTAL_POR_PAGINA, Sort.Direction.ASC, "id")
+                )
+                .map(
+                        clienteEntity -> clienteMapper.toClienteDto(clienteEntity)
+                );
+
+        return new PaginacaoDTO(page.hasNext(), page.getContent());
+    }
+
+    @Override
+    public PaginacaoDTO obterPaginado(int pagina, String filtro) {
+        Page<ClienteDTO> page = clienteRepository.findAllByNomeRazaoSocialContaining(filtro,
+                        PageRequest.of(pagina, TOTAL_POR_PAGINA, Sort.Direction.ASC, "id")
                 )
                 .map(
                         clienteEntity -> clienteMapper.toClienteDto(clienteEntity)

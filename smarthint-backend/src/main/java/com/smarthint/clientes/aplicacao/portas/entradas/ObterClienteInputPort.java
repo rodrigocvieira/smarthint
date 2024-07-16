@@ -8,4 +8,6 @@ public interface ObterClienteInputPort {
     PaginacaoDTO obterPaginado(int pagina);
 
     Cliente obterPorId(String id);
+
+    PaginacaoDTO obterPaginado(int pagina, String filtro);
 }

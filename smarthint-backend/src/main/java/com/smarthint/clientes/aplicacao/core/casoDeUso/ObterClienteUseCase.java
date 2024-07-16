@@ -22,4 +22,9 @@ public class ObterClienteUseCase implements ObterClienteInputPort {
     public Cliente obterPorId(String id) {
         return obterClienteOutputPort.obterPorId(id);
     }
+
+    @Override
+    public PaginacaoDTO obterPaginado(int pagina, String filtro) {
+        return obterClienteOutputPort.obterPaginado(pagina, filtro);
+    }
 }

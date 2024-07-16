@@ -6,6 +6,7 @@ import { Edit, EditBlue } from '../components/Icons';
 import { useEffect, useState } from 'react';
 import ClientePayload from '../model/ClientePayload';
 import { consultaClientes } from '../services/api';
+import Filtro from '../components/Filtro';
 
 export default function Listagem() {
 
@@ -15,21 +16,24 @@ export default function Listagem() {
 	const [paginaAtual, setPaginaAtual] = useState(0)
 
 	const [selecionadoHeader, setSelecionadoHeader] = useState(false)
+	const [janelaFiltrar, setJanelaFiltrar] = useState(false)
+	const [filtroValor, setFiltroValor] = useState("")
 
 	useEffect(() => {
-		consultar(paginaAtual).then(data => {
+		consultar(paginaAtual, filtroValor).then(data => {
 			setPayload(data)
-			setTemPaginaAnterior(false)
+			setTemPaginaAnterior(paginaAtual > 0)
 			setTemPaginaPosterior(data?.proximaPagina)
 		})
-	}, [paginaAtual])
+	}, [paginaAtual, filtroValor])
 
-	async function consultar(pagina: number) {
-		return await consultaClientes(pagina)
+	async function consultar(pagina: number, filtro: string) {
+		return await consultaClientes(pagina, filtro)
 	}
 
-	function filtrar() {
-		//TODO:
+	function consultarPorFiltro(valor: string) {
+		setFiltroValor(valor)
+		setPaginaAtual(0)
 	}
 
 	function controlePaginaAnterior() {
@@ -64,10 +68,14 @@ export default function Listagem() {
 		<div className='m-auto'>
 			<div className='p-5'>
 				<Header />
-				<Button onClick={filtrar}>
+				<Button onClick={() => setJanelaFiltrar(true)}>
 					Filtrar
 				</Button>
 			</div>
+
+			<Filtro janela={janelaFiltrar}
+				setFechar={setJanelaFiltrar}
+				pesquisar={(valor) => consultarPorFiltro(valor)} />
 
 			<Grid.Root>
 				<Grid.Header onClickCheckBox={(e) => {
@@ -114,7 +122,7 @@ export default function Listagem() {
 					onClickAnterior={() => {
 						const controlePagina = controlePaginaAnterior()
 
-						consultar(controlePagina).then(data => {
+						consultar(controlePagina, filtroValor).then(data => {
 							setPayload(data)
 							setTemPaginaAnterior(controlePagina > 0)
 							setTemPaginaPosterior(data.proximaPagina)
@@ -124,14 +132,15 @@ export default function Listagem() {
 					onClickPosterior={() => {
 						const controlePagina = controlePaginaPosterior()
 
-						consultar(controlePagina).then(data => {
+						consultar(controlePagina, filtroValor).then(data => {
 							setPayload(data)
 							setTemPaginaAnterior(true)
 							setTemPaginaPosterior(data.proximaPagina)
 						})
 					}} />
 			</Grid.Root>
-			<div className='text-center'>
+			<div className='text-center flex flex-col'>
+				<label>Controle de Endpoint</label>
 				<label>{process.env.REACT_APP_API_MOCK === "true" ? "API MOCK" : "API SPRING"}</label>
 			</div>
 

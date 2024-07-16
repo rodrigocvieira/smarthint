@@ -10,7 +10,7 @@ export async function consultaClientes(pagina: number) {
         return data[0]
 
     return new ClientePayload(data.clientes.map((cliente: any) =>
-        new ClienteListagemDTO(cliente.id, cliente.nome, cliente.email, cliente.telefone, cliente.dataCadastro, cliente.bloqueado)),
+        new ClienteListagemDTO(cliente.id, cliente.nome, cliente.email, cliente.telefone, cliente.dataDeCadastro, cliente.bloqueado)),
         data.proximaPagina)
 }
 

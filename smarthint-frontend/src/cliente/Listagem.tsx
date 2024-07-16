@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../components/Button';
 import Header from '../components/Header';
 import { Grid } from '../components/Grid/Grid';
@@ -15,6 +14,8 @@ export default function Listagem() {
 	const [temPaginaPosterior, setTemPaginaPosterior] = useState(false)
 	const [paginaAtual, setPaginaAtual] = useState(0)
 
+	const [selecionadoHeader, setSelecionadoHeader] = useState(false)
+
 	useEffect(() => {
 		consultar(paginaAtual).then(data => {
 			setPayload(data)
@@ -28,7 +29,7 @@ export default function Listagem() {
 	}
 
 	function filtrar() {
-
+		//TODO:
 	}
 
 	function controlePaginaAnterior() {
@@ -48,6 +49,16 @@ export default function Listagem() {
 		return controlePagina
 	}
 
+	function marcarDesmarcarTodos(v: boolean) {
+		return payload.clientes.map(cliente => {
+			cliente.selecionado = v;
+			return cliente
+		})
+	}
+
+	function atualizarListagem(clientes: ClienteListagemDTO[]) {
+		setPayload(new ClientePayload(clientes, payload.proximaPagina))
+	}
 
 	return (
 		<div className='m-auto'>
@@ -59,14 +70,38 @@ export default function Listagem() {
 			</div>
 
 			<Grid.Root>
-				<Grid.Header />
+				<Grid.Header onClickCheckBox={(e) => {
+					const clientes = marcarDesmarcarTodos(e)
+					setSelecionadoHeader(e)
+					atualizarListagem(clientes)
+				}} selecionado={selecionadoHeader} />
 				<Grid.Body>
 					{payload?.clientes?.map((cliente: ClienteListagemDTO, i) => {
 
 						const controleCorLinha = i % 2 === 0
 
 						return (
-							<Grid.Line object={cliente} color={controleCorLinha} key={cliente.id}>
+							<Grid.Line
+								object={cliente}
+								color={controleCorLinha}
+								key={cliente.id}
+								selecionado={cliente.selecionado}
+								onSelecionado={(valor) => {
+									if (selecionadoHeader)
+										valor = true
+
+									var clientes = marcarDesmarcarTodos(false)
+									setSelecionadoHeader(false)
+
+									clientes = clientes.map(c => {
+										if (c.id === cliente.id)
+											c.selecionado = valor
+										return c
+									})
+
+									atualizarListagem(clientes)
+								}}
+							>
 								<Grid.Button link={`/clientes/${cliente.id}`} >
 									{controleCorLinha ? Edit : EditBlue}
 								</Grid.Button>

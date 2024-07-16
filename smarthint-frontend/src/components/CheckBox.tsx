@@ -1,16 +1,14 @@
 interface CheckboxProp {
-    value: string,
-    onClick: () => void
+    value: boolean,
+    onClick: (e: any) => void
 }
 
 export default function Checkbox(prop: CheckboxProp) {
 
     return (
-        <>
-            <input type="checkbox"
-                className="cursor-pointer"
-                value={prop.value}
-                onClick={prop.onClick} />
-        </>
+        <input type="checkbox"
+            className="cursor-pointer"
+            checked={prop.value}
+            onChange={prop.onClick} />
     )
 }

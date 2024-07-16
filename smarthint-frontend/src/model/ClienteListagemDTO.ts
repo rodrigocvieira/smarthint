@@ -6,6 +6,7 @@ export default class ClienteListagemDTO {
     #telefone: string;
     #dataDeCadastro: string;
     #bloqueado: boolean;
+    #selecionado: boolean;
 
     constructor(id: string, nome: string, email: string, telefone: string, dataCadastro: string, bloqueado: boolean) {
         this.#id = id
@@ -14,6 +15,7 @@ export default class ClienteListagemDTO {
         this.#telefone = telefone
         this.#dataDeCadastro = dataCadastro
         this.#bloqueado = bloqueado
+        this.#selecionado = false
     }
 
     get id() {
@@ -38,6 +40,17 @@ export default class ClienteListagemDTO {
 
     get bloqueado() {
         return this.#bloqueado
+    }
+
+    get selecionado() {
+        if (this.#selecionado ===undefined)
+            return false
+
+        return this.#selecionado
+    }
+
+    set selecionado(v: boolean){
+        this.#selecionado = v
     }
 
 

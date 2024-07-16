@@ -1,4 +1,6 @@
 import ClienteDTO from "../model/ClienteDTO"
+import ClienteListagemDTO from "../model/ClienteListagemDTO"
+import ClientePayload from "../model/ClientePayload"
 
 export async function consultaClientes(pagina: number) {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/clientes?paginacao=${pagina}`)
@@ -7,7 +9,9 @@ export async function consultaClientes(pagina: number) {
     if (process.env.REACT_APP_API_MOCK !== "false")
         return data[0]
 
-    return data
+    return new ClientePayload(data.clientes.map((cliente: any) =>
+        new ClienteListagemDTO(cliente.id, cliente.nome, cliente.email, cliente.telefone, cliente.dataCadastro, cliente.bloqueado)),
+        data.proximaPagina)
 }
 
 
